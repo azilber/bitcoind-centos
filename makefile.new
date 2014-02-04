@@ -2,16 +2,18 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-USE_UPNP:=
+USE_UPNP:= 1
+USE_TCMALLOC = 1
 
 DEFS=-DNOPCH
+BOOST_INCLUDE_PATH=$(DEPSDIR)/include/boost
 
 DEFS += $(addprefix -I,$(CURDIR) $(BOOST_INCLUDE_PATH) $(BDB_INCLUDE_PATH) $(OPENSSL_INCLUDE_PATH))
 LIBS = $(addprefix -L,$(BOOST_LIB_PATH) $(BDB_LIB_PATH) $(OPENSSL_LIB_PATH))
 
-DEPSDIR=/home/kjj/Bitcoin/Deps
-INCLUDEPATHS= -I"$(DEPSDIR)/include"
-LIBPATHS= -L"$(DEPSDIR)/lib"
+DEPSDIR=/opt/coins
+INCLUDEPATHS=-I$(DEPSDIR)/include
+LIBPATHS=-L$(DEPSDIR)/lib
 BOOST_LIB_SUFFIX=.a
 BDB_LIB_SUFFIX=.a
 CRYPTO_LIB_SUFFIX=.a
@@ -41,6 +43,10 @@ endif
 
 ifneq (${USE_SSL}, 0)
 	DEFS += -DUSE_SSL
+endif
+
+ifneq (${USE_TCMALLOC}, 0)
+        LIBS += -l tcmalloc_minimal
 endif
 
 LIBS+= \

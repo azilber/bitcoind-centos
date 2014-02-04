@@ -1,5 +1,29 @@
+This fork is more of a scratchpad for me.  Please look at the original project (https://github.com/weex/bitcoind-centos) if you want to use the scripts.
+This is more of a mess if specific makefiles that I've been tinkering with.  I use the google performance tools, with all libs end everything living in /opt/coins,
+which contains:
+
+.
+├── bin
+├── build
+├── configs
+├── control
+├── daemons
+├── data
+├── docs
+├── include
+├── lib
+├── mint
+├── openssl
+└── run
+
+Keep and eye on https://github.com/azilber/walletserver if you're interested in this.
+
+
+OLD README:
 This project helps you build bitcoind on CentOS / Redhat and consists of a makefile and bash script. There is no need to modify the username in the makefile as the shell script takes care of it.
 
-This was tested on both 32 and 64-bit versions of CentOS 5.
+This was tested on 64-bit version of CentOS 6.
+
+Support for tcmalloc added.
 
 For reference: https://bitcointalk.org/index.php?topic=65818
